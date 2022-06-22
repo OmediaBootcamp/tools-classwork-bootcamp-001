@@ -1,6 +1,7 @@
 package dev.omedia;
 
 import dev.omedia.creational.builder.Triangle;
+import dev.omedia.structural.adapter.AdapterTest;
 
 /**
  * Hello world!
@@ -29,23 +30,25 @@ public class App {
 //        System.out.println(rectangle1);
 //        System.out.println(rectangle2);
 
-        Triangle triangle1 = Triangle.getBuilder().lengthA(3.).lengthB(2.).lengthC(4).build();
-        Triangle.TriangleBuilder builder = Triangle.getBuilder();
-        builder.lengthA(3.);
+//        Triangle triangle1 = Triangle.getBuilder().lengthA(3.).lengthB(2.).lengthC(4).build();
+//        Triangle.TriangleBuilder builder = Triangle.getBuilder();
+//        builder.lengthA(3.);
+//
+//        // do something please
+//        builder.lengthB(2.);
+//
+//        // do something
+//        builder.lengthC(4.);
+//
+//        Triangle triangle2 = builder.build();
+//
+//        System.out.println(triangle1);
+//        System.out.println(triangle2);
+//
+//        builder.lengthC(0);
+//        Triangle triangle3 = builder.build();
 
-        // do something please
-        builder.lengthB(2.);
-
-        // do something
-        builder.lengthC(4.);
-
-        Triangle triangle2 = builder.build();
-
-        System.out.println(triangle1);
-        System.out.println(triangle2);
-
-        builder.lengthC(0);
-        Triangle triangle3 = builder.build();
+        AdapterTest.test();
 
     }
 }
