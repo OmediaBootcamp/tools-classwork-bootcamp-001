@@ -1,0 +1,6 @@
+services:
+  hello-world:
+    container_name: hello-world-java
+    build: .
+    volumes:
+      - "./Practice Docker:/app/tmp"
