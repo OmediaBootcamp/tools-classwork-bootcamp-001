@@ -1,0 +1,4 @@
+services:
+  yaml-converter:
+    container_name: yaml-converter-java
+    build: .
