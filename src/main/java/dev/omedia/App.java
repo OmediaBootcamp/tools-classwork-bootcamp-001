@@ -8,6 +8,6 @@ import dev.omedia.db.Executor;
 public class App {
     public static void main(String[] args) {
         Executor executor =new Executor();
-        executor.getCustomer();
+        System.out.println(executor.getCustomersByCountry("Germany"));
     }
 }

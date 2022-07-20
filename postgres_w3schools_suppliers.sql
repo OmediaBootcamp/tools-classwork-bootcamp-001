@@ -1,4 +1,4 @@
-create table suppliers
+create table w3schools.suppliers
 (
     supplierid   serial
         constraint supplier_id_pk
@@ -12,7 +12,7 @@ create table suppliers
     phone        varchar(255) default NULL::character varying
 );
 
-alter table suppliers
+alter table w3schools.suppliers
     owner to postgres;
 
 INSERT INTO w3schools.suppliers (supplierid, suppliername, contactname, address, city, postalcode, country, phone) VALUES (1, 'Exotic Liquid', 'Charlotte Cooper', '49 Gilbert St.', 'Londona', 'EC1 4SD', 'UK', '(171) 555-2222');

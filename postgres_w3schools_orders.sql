@@ -1,21 +1,21 @@
-create table orders
+create table w3schools.orders
 (
     orderid    serial
         constraint order_id_pk
             primary key,
     customerid integer
         constraint orders_customers_customerid_fk
-            references customers,
+            references w3schools.customers,
     employeeid integer
         constraint orders_employees_employeeid_fk
-            references employees,
+            references w3schools.employees,
     orderdate  date,
     shipperid  integer
         constraint orders_shippers_shipperid_fk
-            references shippers
+            references w3schools.shippers
 );
 
-alter table orders
+alter table w3schools.orders
     owner to postgres;
 
 INSERT INTO w3schools.orders (orderid, customerid, employeeid, orderdate, shipperid) VALUES (10248, 90, 5, '1996-07-04', 3);

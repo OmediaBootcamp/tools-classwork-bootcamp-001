@@ -3,33 +3,54 @@ package dev.omedia.db;
 import dev.omedia.db.models.Customer;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Executor {
-    private final DBConnection dbConnection = new DBConnection();
+    private final String prefix = "select customerid, customername, contactname, address, city, postalcode, country" +
+            " from w3schools.customers";
 
+    public List<Customer> getCustomersByCountry(String country) {
+        try (Connection conn = DBConnection.INSTANCE.getConnection()) {
+            PreparedStatement preparedStatement = conn.prepareStatement(prefix + " where country=? and customerid=?");
+            preparedStatement.setString(1, country);
+            preparedStatement.setInt(2,1);
+            return getCustomerList(preparedStatement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    public List<Customer> getCustomer() {
-        try (Connection conn = dbConnection.getConnection()) {
-            ResultSet resultSet = conn.createStatement().executeQuery("select * FROM w3schools.customers");
-            int nColumn = resultSet.getMetaData().getColumnCount();
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 1; i <= nColumn; i++) {
-                stringBuilder.append(resultSet.getMetaData().getColumnName(i));
-                stringBuilder.append(i == nColumn ? "\n" : ",");
-            }
+    public List<Customer> getCustomers() {
+        try (Connection conn = DBConnection.INSTANCE.getConnection()) {
+            PreparedStatement preparedStatement = conn.prepareStatement(prefix);
+            return getCustomerList(preparedStatement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<Customer> getCustomerList(PreparedStatement preparedStatement) {
+        List<Customer> customers = new ArrayList<>();
+        try (Connection conn = DBConnection.INSTANCE.getConnection()) {
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                for (int i = 1; i <= nColumn; i++) {
-                    stringBuilder.append(resultSet.getString(i));
-                    stringBuilder.append(i == nColumn ? "\n" : ",");
-                }
+                customers.add(new Customer(
+                        resultSet.getLong("customerid"),
+                        resultSet.getString("customername"),
+                        resultSet.getString("contactname"),
+                        resultSet.getString("address"),
+                        resultSet.getString("city"),
+                        resultSet.getString("postalcode"),
+                        resultSet.getString("country")
+                ));
             }
-            System.out.println(stringBuilder);
+            return customers;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 }

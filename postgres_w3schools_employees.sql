@@ -1,4 +1,4 @@
-create table employees
+create table w3schools.employees
 (
     employeeid serial
         constraint employee_id_pk
@@ -10,7 +10,7 @@ create table employees
     notes      text
 );
 
-alter table employees
+alter table w3schools.employees
     owner to postgres;
 
 INSERT INTO w3schools.employees (employeeid, lastname, firstname, birthdate, photo, notes) VALUES (1, 'Davolio', 'Nancy', '1968-12-08', 'EmpID1.pic', 'Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of "Toastmasters International".');

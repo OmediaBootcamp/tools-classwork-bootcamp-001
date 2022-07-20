@@ -1,18 +1,18 @@
-create table order_details
+create table w3schools.order_details
 (
     orderdetailid serial
         constraint orderdetail_id_pk
             primary key,
     orderid       integer
         constraint order_details_orders_orderid_fk
-            references orders,
+            references w3schools.orders,
     productid     integer
         constraint order_details_products_productid_fk
-            references products,
+            references w3schools.products,
     quantity      integer
 );
 
-alter table order_details
+alter table w3schools.order_details
     owner to postgres;
 
 INSERT INTO w3schools.order_details (orderdetailid, orderid, productid, quantity) VALUES (1, 10248, 11, 12);

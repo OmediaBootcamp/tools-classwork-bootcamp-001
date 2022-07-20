@@ -1,4 +1,4 @@
-create table shippers
+create table w3schools.shippers
 (
     shipperid   serial
         constraint shipper_id_pk
@@ -7,7 +7,7 @@ create table shippers
     phone       varchar(255) default NULL::character varying
 );
 
-alter table shippers
+alter table w3schools.shippers
     owner to postgres;
 
 INSERT INTO w3schools.shippers (shipperid, shippername, phone) VALUES (1, 'Speedy Express', '(503) 555-9831');

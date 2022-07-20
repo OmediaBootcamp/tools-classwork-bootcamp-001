@@ -1,4 +1,4 @@
-create table products
+create table w3schools.products
 (
     productid   serial
         constraint product_id_pk
@@ -6,15 +6,15 @@ create table products
     productname varchar(255)   default NULL::character varying,
     supplierid  integer
         constraint products_suppliers_supplierid_fk
-            references suppliers,
+            references w3schools.suppliers,
     categoryid  integer
         constraint products_categories_categoryid_fk
-            references categories,
+            references w3schools.categories,
     unit        varchar(255)   default NULL::character varying,
     price       numeric(15, 5) default NULL::numeric
 );
 
-alter table products
+alter table w3schools.products
     owner to postgres;
 
 INSERT INTO w3schools.products (productid, productname, supplierid, categoryid, unit, price) VALUES (1, 'Chais', 1, 1, '10 boxes x 20 bags', 18.00000);

@@ -1,4 +1,6 @@
-create table categories
+
+
+create table w3schools.categories
 (
     categoryid   serial
         constraint category_id_pk
@@ -7,7 +9,7 @@ create table categories
     description  varchar(255) default NULL::character varying
 );
 
-alter table categories
+alter table w3schools.categories
     owner to postgres;
 
 INSERT INTO w3schools.categories (categoryid, categoryname, description) VALUES (1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales');
